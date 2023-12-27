@@ -39,6 +39,12 @@ const githubdata = {
   "updated_at": "2023-12-24T20:41:01Z"
 }
 
+const facebookdata = {
+  "name" : "shaik imran",
+  "email": "imran22shaik",
+  "password": "1234567890"
+}
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
@@ -61,6 +67,23 @@ app.get("/youtube", (req, res)=>{
 
 app.get("/github", (req, res) => {
   res.json(githubdata)
+})
+
+app.get ("/facebook", (req, res)=>{
+  res.json(facebookdata)
+})
+
+app.get('/example/b', (req, res, next) => {
+  console.log('the response will be sent by the next function ...')
+  next()
+}, (req, res) => {
+  res.send('Hello from B!')
+})
+
+app.get("/exam/c", (req, res, next) => {
+  console.log("hello from C!")
+  next()
+  res.send("Hello from C !")
 })
 
 app.listen(process.env.PORT, () => {
